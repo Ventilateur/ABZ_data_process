@@ -6,11 +6,11 @@ package com.abz.process;
  * @author Phan Vu Hoang
  * @see AbzDataFactory
  */
-public interface AbzUserMethod {
+public interface AbzUserMethod<T extends AbzData> {
     /**
      * Method to be invoked when calling the right command.
-     * @param data the received <code>AbzData</code> object
+     * @param data the received <code>AbzDataSet1</code> object
      * @see AbzDataFactory
      */
-    void invoke(AbzData data);
+    void invoke(T data);
 }

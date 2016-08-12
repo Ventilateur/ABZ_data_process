@@ -13,20 +13,22 @@ import java.util.Map;
  *
  * @author Phan Vu Hoang
  */
-public class AbzDataFactory {
+public class AbzDataFactory<T extends AbzData> {
 
     private static final String _NO_METHOD_EXCEPTION_MSG = "No method found, check your mapping!!!";
     private static final String _BAD_JSON_FORMAT_EXCEPTION_MSG = "JSON syntax error, check your input format!!!";
 
     private Map<Integer, AbzUserMethod> methodMap;
     private Gson json;
+    private Class<T> dataAsObj;
 
     /**
      * Constructor. Initialize map set and Gson object.
      */
-    public AbzDataFactory() {
+    public AbzDataFactory(Class<T> obj) {
         methodMap = new HashMap<>();
         json = new Gson();
+        dataAsObj = obj;
     }
 
     /**
@@ -45,8 +47,8 @@ public class AbzDataFactory {
      * @param data an <code>AbzData</code> object to be serialized
      * @return a JSON <code>String</code> form of the object above
      */
-    public String getCommandString(AbzData data) {
-        return json.toJson(data, AbzData.class);
+    public  String getCommandString(T data) {
+        return json.toJson(data);
     }
 
     /**
@@ -57,7 +59,7 @@ public class AbzDataFactory {
      */
     public void perform(String jsonString) {
         try {
-            AbzData data = json.fromJson(jsonString, AbzData.class);
+            T data = json.fromJson(jsonString, dataAsObj);
             try {
                 methodMap.get(data.getId()).invoke(data);
             } catch (NullPointerException e) {

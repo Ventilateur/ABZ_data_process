@@ -7,7 +7,13 @@ package com.abz.process;
  */
 public class AbzData {
     private int id;
-    private int[] orph;
+
+    /**
+     * Constructor.
+     */
+    public AbzData() {
+        id = 0;
+    }
 
     /**
      * Get data's identifier
@@ -15,19 +21,4 @@ public class AbzData {
      * @return the value of id field
      */
     public int getId() { return id; }
-
-    /**
-     * Get the <code>orph</code> data
-     *
-     * @return <code>orph</code> data
-     */
-    public int[] getOrph() { return orph; }
-
-    /**
-     * Constructor.
-     */
-    AbzData() {
-        id = 0;
-        orph = new int[3];
-    }
 }
