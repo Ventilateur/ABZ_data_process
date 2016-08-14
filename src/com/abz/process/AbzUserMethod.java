@@ -9,7 +9,7 @@ package com.abz.process;
 public interface AbzUserMethod<T extends AbzData> {
     /**
      * Method to be invoked when calling the right command.
-     * @param data the received <code>AbzDataSet1</code> object
+     * @param data the received <code>AbzData</code> object
      * @see AbzDataFactory
      */
     void invoke(T data);

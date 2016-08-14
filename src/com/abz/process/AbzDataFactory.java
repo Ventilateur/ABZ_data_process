@@ -18,7 +18,7 @@ public class AbzDataFactory<T extends AbzData> {
     private static final String _NO_METHOD_EXCEPTION_MSG = "No method found, check your mapping!!!";
     private static final String _BAD_JSON_FORMAT_EXCEPTION_MSG = "JSON syntax error, check your input format!!!";
 
-    private Map<Integer, AbzUserMethod> methodMap;
+    private Map<Integer, AbzUserMethod<T>> methodMap;
     private Gson json;
     private Class<T> dataAsObj;
 
@@ -37,7 +37,7 @@ public class AbzDataFactory<T extends AbzData> {
      * @param id the id value, which will be found later in the json string
      * @param method an <code>AbzUserMethod</code> instance, all methods inside must be override.
      */
-    public void put(int id, AbzUserMethod method) {
+    public void put(int id, AbzUserMethod<T> method) {
         methodMap.put(id, method);
     }
 
